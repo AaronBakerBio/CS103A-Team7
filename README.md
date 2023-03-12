@@ -4,7 +4,7 @@ Group project for CS 103A. Team Rue Lerner, Eugenio Sanchez Arguello, Aaron Bake
 
 ### Project Goal:
 
-#### Create a web app with flask, that hits the Open AI api and displays the response.
+#### Create a web app with `flask`, that hits the `Open AI API` and displays the response.
 
 - Each team member has to create an html page in the `templates` folder.
 - The html page should have a form and should use the input from this form to send a query to ChatGPT.
@@ -12,8 +12,8 @@ Group project for CS 103A. Team Rue Lerner, Eugenio Sanchez Arguello, Aaron Bake
 
 Current Updates:
 
-- Added a boilerplate flask web app to start from.
-- Next step is querying OpenAI API.
+- Added a boilerplate `flask` web app to start from.
+- Next step is querying `OpenAI API`.
 
 Past Updates:
 
