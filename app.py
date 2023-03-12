@@ -3,19 +3,9 @@ import requests
 
 app = Flask(__name__)
 
-OPENAI_API_KEY = 'your_openai_api_key_here'
-
-def test_api_key(api_key):
-    headers = {
-        'Content-Type': 'application/json',
-        'Authorization': f'Bearer {api_key}',
-    }
-    api_endpoint = 'https://api.openai.com/v1/test'
-    response = requests.get(api_endpoint, headers=headers)
-    return response.ok
+OPENAI_API_KEY = 'your-api-key'
 
 def get_response(prompt):
-    response = ''
     headers = {
         'Content-Type': 'application/json',
         'Authorization': f'Bearer {OPENAI_API_KEY}',
@@ -39,8 +29,6 @@ def home():
 @app.route('/get_response', methods=['POST'])
 def get_response_from_api():
     prompt = request.form['prompt']
-    if not test_api_key(OPENAI_API_KEY):
-        return 'Error: Invalid OpenAI API key'
     response = get_response(prompt)
     return response
 
