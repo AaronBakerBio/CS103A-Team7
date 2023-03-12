@@ -8,7 +8,7 @@ Group project for CS 103A. Team Rue Lerner, Eugenio Sanchez Arguello, Aaron Bake
 
 - Each team member has to create an html page in the `templates` folder.
 - The html page should have a form and should use the input from this form to send a query to ChatGPT.
-  (ex: a horror story maker which takes the name of the protagonist,antagonist, and the plot as input. Then displays ChatGPT's response in the html. )
+  (ex: a horror story maker which takes the name of the protagonist, the antagonist, and the plot as input. Then displays ChatGPT's response in the html. )
 
 Current Updates:
 
