@@ -3,7 +3,7 @@ from flask import request, Flask, render_template
 from gpt import GPT
 
 app = Flask(__name__)
-gptAPI = GPT("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")
+gptAPI = GPT("your key ")
 
 
 @app.route("/")
