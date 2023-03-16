@@ -1,36 +1,45 @@
-from flask import Flask, render_template, request
-import requests
+from flask import request, Flask, render_template
+
+from gpt import GPT
 
 app = Flask(__name__)
+gptAPI = GPT("your key ")
 
-OPENAI_API_KEY = 'your-api-key'
 
-def get_response(prompt):
-    headers = {
-        'Content-Type': 'application/json',
-        'Authorization': f'Bearer {OPENAI_API_KEY}',
-    }
-    data = {
-        'prompt': prompt,
-        'temperature': 0.5,
-        'max_tokens': 100,
-        'top_p': 1,
-        'frequency_penalty': 0,
-        'presence_penalty': 0,
-    }
-    api_endpoint = 'https://api.openai.com/v1/engines/davinci-codex/completions'
-    response = requests.post(api_endpoint, headers=headers, json=data)
-    return response.json()['choices'][0]['text']
+@app.route("/")
+def index():
+    return render_template("Flaskdemo.html")
 
-@app.route('/')
-def home():
-    return render_template('index.html')
 
-@app.route('/get_response', methods=['POST'])
-def get_response_from_api():
-    prompt = request.form['prompt']
-    response = get_response(prompt)
-    return response
+@app.route("/aaron", methods=['GET', 'POST'])
+def aaron():
+    if gptAPI is None:
+        return "Error: API key not set"
+    if request.method == 'POST':
+        prompt = request.form['prompt']
+        newprompt = prompt + ''' put comments on the code above in the style of the code below. strip the actual code
+        from the inside of the method leaving just // origin code
+/**
+ * O(1)
+ * Method getFirst() returns a pointer to the first element in the list.
+ * @return a pointer to the first element in the list
+ */
+public Node<T> getFirst()
+{
+  // origin code 
+}
+'''
+        answer = gptAPI.getResponse(newprompt)
+        return render_template("response.html", answer=answer, prompt=prompt)
+    else:
+        return '''
+            <h1>GPT Demo App</h1>
+            Enter your code below to receive java style comments 
+            <form method="post">
+                <textarea name="prompt"></textarea>
+                <p><input type=submit value="get response">
+            </form>
+            '''
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=5001)

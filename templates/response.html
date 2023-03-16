@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>GPT generated response</title>
+    <style>
+      body {
+        background-color: #f2f2f2;
+        color: #333;
+        font-family: Arial, sans-serif;
+      }
+      h1 {
+        color: #007bff;
+        margin-top: 30px;
+        margin-bottom: 20px;
+        font-size: 36px;
+      }
+      h3 {
+        color: #333;
+        margin-top: 30px;
+        margin-bottom: 10px;
+        font-size: 24px;
+      }
+      pre {
+        background-color: #f7f7f7;
+        color: #333;
+        padding: 10px;
+        border-radius: 5px;
+        font-size: 18px;
+        margin-top: 10px;
+        margin-bottom: 30px;
+        white-space: pre-wrap;
+      }
+      a {
+        color: #007bff;
+        text-decoration: none;
+        font-size: 18px;
+        margin-right: 10px;
+      }
+      a:hover {
+        color: #0056b3;
+        text-decoration: underline;
+      }
+      button {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        padding: 10px;
+        border-radius: 5px;
+        font-size: 18px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>GPT generated response</h1>
+    <h3>Question:</h3>
+    <pre>{{ prompt }}</pre>
+    <h3>Answer:</h3>
+    <pre>{{ answer }}</pre>
+    <button id="copy-btn">Copy Response</button>
+    <a href="{{ url_for('aaron') }}">Make another query</a>
+    <script>
+      document.getElementById("copy-btn").addEventListener("click", function() {
+        // Get the text to copy
+        var text = document.querySelector("pre").textContent;
+        // Create a temporary textarea element to copy the text
+        var tempTextArea = document.createElement("textarea");
+        tempTextArea.textContent = text;
+        // Append the temporary element to the document
+        document.body.appendChild(tempTextArea);
+        // Select the text in the temporary element
+        tempTextArea.select();
+        // Copy the selected text
+        document.execCommand("copy");
+        // Remove the temporary element from the document
+        document.body.removeChild(tempTextArea);
+        // Alert the user that the text has been copied
+        alert("Response copied to clipboard!");
+      });
+    </script>
+  </body>
+</html>
