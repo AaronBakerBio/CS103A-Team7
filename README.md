@@ -18,3 +18,5 @@ Group project for CS 103A. Team Rue Lerner, Eugenio Sanchez Arguello, Aaron Bake
 ### Past Updates:
 
 - Meeting Tuesday March 14, 2023 19:00-19:30.
+
+Eugenio Test
