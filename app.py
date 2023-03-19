@@ -23,6 +23,11 @@ def index():
     return render_template("Flaskdemo.html")
 
 
+
+@app.route("/about")
+def about():
+    return render_template("about.html")
+
 @app.route("/aaron", methods=['GET', 'POST'])
 def aaron():
     return render_template("aaron.html")

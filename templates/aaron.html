@@ -1,20 +1,65 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Aaron's GPT prompts</title>
+    <title>Aaron's GPT Prompts</title>
+    <style>
+      body {
+        background-color: #1c1c1c;
+        color: #f5f5f5;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      h1 {
+        color: #f5f5f5;
+        text-align: center;
+        margin-top: 50px;
+      }
+
+      h2 {
+        color: #f5f5f5;
+        margin-top: 30px;
+      }
+
+      p {
+        margin-top: 10px;
+        line-height: 1.5;
+      }
+
+      a {
+        color: #f5f5f5;
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+    </style>
   </head>
   <body>
-    <h1>Aaron's Flask Demo</h1>
-    <p>This is a demo of some of Aaron's GPT prompts. Check out the tools below:</p>
+    <div class="container">
+      <h1>Aaron's Flask Demo</h1>
+      <p>This is a demo of some of Aaron's GPT prompts. Check out the tools below:</p>
 
-    <h2><a href="/comment" title="Generate Java comments">Java comments generator</a></h2>
-    <p>This tool generates high-quality comments for Java code automatically based on the code's structure and functionality.</p>
+      <h2><a href="/comment">Java Comments Generator</a></h2>
+      <p>This tool generates high-quality comments for Java code automatically based on the code's structure and functionality.</p>
 
-    <h2><a href="/descriptions" title="Create descriptions for Java code">Java code description maker</a></h2>
-    <p>This tool creates clear and concise descriptions for Java code by analyzing the code's purpose and functionality.
+      <h2><a href="/descriptions">Java Code Description Maker</a></h2>
+      <p>This tool creates clear and concise descriptions for Java code by analyzing the code's purpose and functionality.
         It cannot handle long code as it would consume too many tokens.</p>
 
-    <h2><a href="/pseudo" title="Create Java Pseudocode">Java pseudocode maker</a></h2>
-    <p>This tool creates data structures compliant pseudocode</p>
+      <h2><a href="/pseudo">Java Pseudocode Maker</a></h2>
+      <p>This tool creates pseudocode compliant with data structures.</p>
+
+      <h2><a href="/about">About the Tools</a></h2>
+      <p>Explanation of this section.</p>
+    </div>
   </body>
 </html>
