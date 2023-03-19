@@ -1,7 +1,3 @@
-"""
-Title: GPT Flask App -- In Production
-__author__ = "Aaron Baker, Abby Iberkleid-Szainrok, Rue Lerner, Eugenio Arguello-Sanchez"
-"""
 from flask import request, Flask, render_template
 
 from gpt import GPT
@@ -10,7 +6,7 @@ app = Flask(__name__)
 gptAPI = GPT("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")
 
 
-def process_request(prompt, new_prompt, html_arg):
+def process_request(prompt, new_prompt, htmlarg):
     if gptAPI is None:
         return "Error: API key not set"
     if request.method == 'POST':
@@ -19,7 +15,7 @@ def process_request(prompt, new_prompt, html_arg):
         answer = gptAPI.getResponse(new_prompt)
         return render_template("response.html", answer=answer, prompt=prompt)
     else:
-        return render_template(html_arg)
+        return render_template(htmlarg)
 
 
 @app.route("/")
@@ -31,69 +27,24 @@ def index():
 def aaron():
     return render_template("aaron.html")
 
-@app.route("/Eugenio", methods = ['GET', 'POST'])
-def Eugenio():
+@app.route("/descriptions", methods=['GET', 'POST'])
+def descriptions():
     if request.method == 'POST':
         prompt = request.form['prompt']
-        new_prompt = "enter your prompt"
-        return process_request(prompt, new_prompt, "response.html")
+        new_prompt = ''' for the code I entered, explain what it did. If it uses data structures, use examples where 
+        you explain step by step what happens to those data structures. I am not a long time coder and need it clear 
+        and very descriptive, with numbered steps in your examples.'''
+        return process_request(prompt, new_prompt, "pseudo.html")
     else:
         return '''
-                <h1>GPT Demo App</h1>
-                Enter your code below to receive java pseudocode 
-                <form method="post">
-                    <textarea name="prompt"></textarea>
-                    <p><input type=submit value="get response">
-                </form>
-                '''
+                    <h1>GPT Demo App</h1>
+                    Enter your code below to receive a description at a low level
+                    <form method="post">
+                        <textarea name="prompt"></textarea>
+                        <p><input type=submit value="get response">
+                    </form>
+                    '''
 
-@app.route("/Abby", methods=['GET', 'POST'])
-def pseudo():
-    if request.method == 'POST':
-        prompt = request.form['prompt']
-        new_prompt = ""
-        return process_request(prompt, new_prompt, "Abby.html")
-    else:
-        return '''
-                <h1>GPT Demo App</h1>
-                Enter your code below to receive java pseudocode 
-                <form method="post">
-                    <textarea name="prompt"></textarea>
-                    <p><input type=submit value="get response">
-                </form>
-                '''
-
-@app.route("/Rue", methods=['GET', 'POST'])
-def pseudo():
-    if request.method == 'POST':
-        prompt = request.form['prompt']
-        new_prompt = ""
-        return process_request(prompt, new_prompt, "Rue.html")
-    else:
-        return '''
-                <h1>GPT Demo App</h1>
-                Enter your code below to receive java pseudocode 
-                <form method="post">
-                    <textarea name="prompt"></textarea>
-                    <p><input type=submit value="get response">
-                </form>
-                '''
-    
-@app.route("/Eugenio", methods = ['GET', 'POST'])
-def Eugenio():
-    if request.method == 'POST':
-        prompt = request.form['prompt']
-        new_prompt = "enter your prompt"
-        return process_request(prompt, new_prompt, "Eugenio.html")
-    else:
-        return '''
-                <h1>GPT Demo App</h1>
-                Enter your code below to receive java pseudocode 
-                <form method="post">
-                    <textarea name="prompt"></textarea>
-                    <p><input type=submit value="get response">
-                </form>
-                '''
 
 @app.route("/pseudo", methods=['GET', 'POST'])
 def pseudo():
@@ -174,7 +125,7 @@ Pseudocode:
     else:
         return '''
                 <h1>GPT Demo App</h1>
-                Enter your code below to receive java pseudocode 
+                Enter your code below to receive java style comments 
                 <form method="post">
                     <textarea name="prompt"></textarea>
                     <p><input type=submit value="get response">
@@ -187,16 +138,16 @@ def comment():
     if request.method == 'POST':
         prompt = request.form['prompt']
         new_prompt = ''' put comments on the code above in the style of the code below. strip the actual code
-            from the inside of the method leaving just // origin code. Do not include any other stuff.
+            from the inside of the method leaving just // origin code. Do not include any other stuff
             /**
-            * O(1)
-            * Method getFirst() returns a pointer to the first element in the list.
-            * @return A pointer to the first element in the list.
-            */
-            public Node<T> getFirst()
-            {
-                // origin code
-            }
+* O(1)
+* Method getFirst() returns a pointer to the first element in the list.
+* @return A pointer to the first element in the list.
+*/
+public Node<T> getFirst()
+    {
+        // origin code
+    }
         '''
         return process_request(prompt, new_prompt, "comment.html")
     else:
@@ -206,11 +157,58 @@ def comment():
             <form method="post">
                 <textarea name="prompt"></textarea>
                 <p><input type=submit value="get response">
-            </form>
+            </form> 
             '''
 
+@app.route("/Eugenio", methods = ['GET', 'POST'])
+def Eugenio():
+    if request.method == 'POST':
+        prompt = request.form['prompt']
+        new_prompt = " is the name of my new cookie, give me a recipe for this new sweet."
+        return process_request(prompt, new_prompt, "response.html")
+    else:
+        return '''
+                <h1>GPT Demo App</h1>
+                Enter a name for your new cookie type
+                <form method="post">
+                    <textarea name="prompt"></textarea>
+                    <p><input type=submit value="get response">
+                </form>
+                '''
 
+@app.route("/Abby", methods=['GET', 'POST'])
+def Abby():
+    if request.method == 'POST':
+        prompt = request.form['prompt']
+        new_prompt = " was a knight in Hispania, tell me a story about him"
+        return process_request(prompt, new_prompt, "response.html")
+    else:
+        return '''
+                <h1>GPT Demo App</h1>
+                Enter your knight's name below to receive a short story 
+                <form method="post">
+                    <textarea name="prompt"></textarea>
+                    <p><input type=submit value="get response">
+                </form>
+                '''
+
+@app.route("/Rue", methods=['GET', 'POST'])
+def Rue():
+    if request.method == 'POST':
+        prompt = request.form['prompt']
+        new_prompt = " is the name for my new car. Make up a car and give me its specs. It should fly, and talk " \
+                     "obviously, so you should mention that in your response. Keep it to 500 words."
+        return process_request(prompt, new_prompt, "response.html")
+    else:
+        return '''
+                <h1>GPT Demo App</h1>
+                Enter your car name below to hear made up car specs 
+                <form method="post">
+                    <textarea name="prompt"></textarea>
+                    <p><input type=submit value="get response">
+                </form>
+                '''
 
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5001)
+    app.run(debug=True, port=5004)

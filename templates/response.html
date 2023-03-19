@@ -48,6 +48,7 @@
         border-radius: 5px;
         font-size: 18px;
         cursor: pointer;
+        margin-right: 10px;
       }
       button:hover {
         background-color: #0056b3;
@@ -63,22 +64,18 @@
     <button id="copy-btn">Copy Response</button>
     <a href="{{ url_for('aaron') }}">Make another query</a>
     <script>
+      function copyToClipboard(text) {
+        navigator.clipboard.writeText(text).then(function() {
+          alert("Response copied to clipboard!");
+        }, function() {
+          alert("Copy failed. Please try again.");
+        });
+      }
       document.getElementById("copy-btn").addEventListener("click", function() {
         // Get the text to copy
-        var text = document.querySelector("pre").textContent;
-        // Create a temporary textarea element to copy the text
-        var tempTextArea = document.createElement("textarea");
-        tempTextArea.textContent = text;
-        // Append the temporary element to the document
-        document.body.appendChild(tempTextArea);
-        // Select the text in the temporary element
-        tempTextArea.select();
+        var text = document.querySelectorAll("pre")[1].textContent;
         // Copy the selected text
-        document.execCommand("copy");
-        // Remove the temporary element from the document
-        document.body.removeChild(tempTextArea);
-        // Alert the user that the text has been copied
-        alert("Response copied to clipboard!");
+        copyToClipboard(text);
       });
     </script>
   </body>
