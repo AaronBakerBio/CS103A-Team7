@@ -24,7 +24,7 @@ class GPT():
         completion = openai.Completion.create(
             engine=self.model_engine,
             prompt=prompt,
-            max_tokens=400,
+            max_tokens=1024,
             n=1,
             stop=None,
             temperature=0.8,

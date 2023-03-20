@@ -144,7 +144,7 @@ def descriptions(prompt_content="  Enter your code below to receive description 
         new_prompt = ''' for the code I entered, explain what it did. If it uses data structures, use examples where 
         you explain step by step what happens to those data structures. I am not a long time coder and need it clear 
         and very descriptive, with numbered steps in your examples.'''
-        return process_request(prompt, new_prompt, "dankresponse.html")
+        return process_request(prompt, new_prompt, "aaron_response.html")
     else:
         return render_template('prompt.html', prompt_content=prompt_content, title=title)
 
@@ -225,7 +225,7 @@ Pseudocode:
 11          i++
 
         '''
-        return process_request(prompt, new_prompt, "dankresponse.html")
+        return process_request(prompt, new_prompt, "aaron_response.html")
     else:
         return render_template('prompt.html', prompt_content=prompt_content, title=title)
 
@@ -246,7 +246,7 @@ def comment(prompt_content="This method will convert code in java into pseudocod
                 // origin code
             }
         '''
-        return process_request(prompt, new_prompt, "dankresponse.html")
+        return process_request(prompt, new_prompt, "aaron_response.html")
     else:
         return render_template('prompt.html', prompt_content=prompt_content, title=title)
         
