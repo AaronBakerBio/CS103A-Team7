@@ -24,7 +24,7 @@ class GPT():
         completion = openai.Completion.create(
             engine=self.model_engine,
             prompt=prompt,
-            max_tokens=1024,
+            max_tokens=400,
             n=1,
             stop=None,
             temperature=0.8,
@@ -37,5 +37,5 @@ if __name__=='__main__':
     '''
     '''
     import os
-    openai.api_key = "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"
-    g = GPT("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")
+    openai.api_key = "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"
+    g = GPT("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")

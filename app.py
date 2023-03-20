@@ -3,7 +3,7 @@ from flask import request, Flask, render_template
 from gpt import GPT
 
 app = Flask(__name__)
-gptAPI = GPT("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")
+gptAPI = GPT("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")
 
 
 
@@ -235,16 +235,16 @@ def comment(prompt_content="This method will convert code in java into pseudocod
     if request.method == 'POST':
         prompt = request.form['prompt']
         new_prompt = ''' put comments on the code above in the style of the code below. strip the actual code
-            from the inside of the method leaving just // origin code. Do not include any other stuff
+            from the inside of the method leaving just // origin code. Do not include any other stuff.
             /**
-* O(1)
-* Method getFirst() returns a pointer to the first element in the list.
-* @return A pointer to the first element in the list.
-*/
-public Node<T> getFirst()
-    {
-        // origin code
-    }
+            * O(1)
+            * Method getFirst() returns a pointer to the first element in the list.
+            * @return A pointer to the first element in the list.
+            */
+            public Node<T> getFirst()
+            {
+                // origin code
+            }
         '''
         return process_request(prompt, new_prompt, "dankresponse.html")
     else:
