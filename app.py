@@ -138,7 +138,7 @@ def aaron_home():
     return render_template("aaron.html")
    
 @app.route("/aaron_descriptions", methods=['GET', 'POST'])
-def descriptions(prompt_content=" Aaron Sample", title=" Aaron Sample"):
+def descriptions(prompt_content="  Enter your code below to receive description of what code does", title="Pseudocode description maker"):
     if request.method == 'POST':
         prompt = request.form['prompt']
         new_prompt = ''' for the code I entered, explain what it did. If it uses data structures, use examples where 
