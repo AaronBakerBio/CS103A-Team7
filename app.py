@@ -138,7 +138,7 @@ def aaron_home():
     return render_template("aaron.html")
    
 @app.route("/aaron_descriptions", methods=['GET', 'POST'])
-def descriptions(prompt_content="  Enter your code below to receive description of what code does", title="Pseudocode description maker"):
+def descriptions(prompt_content="  Enter your code below to receive description of what code does", title="Code description maker"):
     if request.method == 'POST':
         prompt = request.form['prompt']
         new_prompt = ''' for the code I entered, explain what it did. If it uses data structures, use examples where 
@@ -151,7 +151,7 @@ def descriptions(prompt_content="  Enter your code below to receive description 
 
 
 @app.route("/aaron_pseudo", methods=['GET', 'POST'])
-def pseudo(prompt_content=" Aaron Sample", title=" Aarron Sample"):
+def pseudo(prompt_content="Enter your code below to receive java style pseudocode", title="Java pseudocode generator"):
     if request.method == 'POST':
         prompt = request.form['prompt']
         new_prompt = ''' based on my above java code, turn it into pseudocode.The format for methods 
