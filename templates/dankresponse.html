@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>GPT Generated Response</title>
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1>GPT Generated Response</h1>
+      <h3>Question:</h3>
+      <code>{{ prompt }}</code>
+      <h3>Answer:</h3>
+      <pre id="answer">{{ answer }}</pre>
+      <button id="copy-btn">Copy Response</button>
+    </div>
+
+    <script>
+      function copyToClipboard(text) {
+        navigator.clipboard.writeText(text).then(
+          function () {
+            alert("Response copied to clipboard!");
+          },
+          function () {
+            alert("Copy failed. Please try again.");
+          }
+        );
+      }
+      document.getElementById("answer");
+      document
+        .getElementById("copy-btn")
+        .addEventListener("click", function () {
+          // Get the text to copy
+          var text = document.querySelectorAll("pre")[1].textContent;
+          // Copy the selected text
+          copyToClipboard(text);
+        });
+    </script>
+  </body>
+</html>
