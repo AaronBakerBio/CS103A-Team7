@@ -111,12 +111,11 @@
         );
       }
 
-      document.getElementById("answer");
       document
         .getElementById("copy-btn")
         .addEventListener("click", function () {
           // Get the text to copy
-          var text = document.querySelectorAll("pre")[1].textContent;
+          var text = document.querySelector("#answer").textContent;
           // Copy the selected text
           copyToClipboard(text);
         });

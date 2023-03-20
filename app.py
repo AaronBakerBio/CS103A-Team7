@@ -231,11 +231,11 @@ Pseudocode:
 
             
 @app.route("/aaron_comment", methods=['GET', 'POST'])
-def comment(prompt_content="This method will convert code in java into pseudocode.", title="Pseudocode generator for java"):
+def comment(prompt_content="This method will give you javadocs for java code with time complexity.", title="Java comment generator"):
     if request.method == 'POST':
         prompt = request.form['prompt']
-        new_prompt = ''' put comments on the code above in the style of the code below. strip the actual code
-            from the inside of the method leaving just // origin code. Do not include any other stuff.
+        new_prompt = ''' put comments on the methods above in the style of the code below. strip the actual code
+            from the inside of the method leaving just // origin code. 
             /**
             * O(1)
             * Method getFirst() returns a pointer to the first element in the list.
