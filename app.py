@@ -138,7 +138,7 @@ def aaron_home():
     return render_template("aaron.html")
    
 @app.route("/aaron_descriptions", methods=['GET', 'POST'])
-def descriptions(prompt_content=" Aaron Sample", title=" Aarron Sample"):
+def descriptions(prompt_content=" Aaron Sample", title=" Aaron Sample"):
     if request.method == 'POST':
         prompt = request.form['prompt']
         new_prompt = ''' for the code I entered, explain what it did. If it uses data structures, use examples where 
