@@ -80,11 +80,29 @@ Eugenio Code Start
 def eugenio_home():
     return render_template("eugenio.html")
     
-@app.route("/eugenio/sample", methods=['GET', 'POST'])
-def eugenio(prompt_content=" Euegnio Sample", title=" Eugenio Sample"):
+@app.route("/eugenio/runningtime", methods=['GET', 'POST'])
+def eugenio(prompt_content="This tool does the runtime analysis of the input code. Please type your method in the following text box.", title=" Runtime Analysis Developer Tool"):
     if request.method == 'POST':
         prompt = request.form['prompt']
-        new_prompt = " is the name of my new cookie, give me a recipe for this new sweet."
+        new_prompt = " Can you please the the runtime of the follow method? ."
+        return process_request(prompt, new_prompt, "response.html")
+    else:
+        return render_template('prompt.html', prompt_content=prompt_content, title=title)
+
+@app.route("/eugenio/space", methods=['GET', 'POST'])
+def eugenio1(prompt_content=" This tool does a space complexity analysis for your methods or algorithms. Please type your method in the following text box. ", title=" Space Complexity analysis Developer Tool"):
+    if request.method == 'POST':
+        prompt = request.form['prompt']
+        new_prompt = " Can you please find the Space Complexity analysis of the follow method? The complexity analysis refers to the total amount of memory space used by the program."
+        return process_request(prompt, new_prompt, "response.html")
+    else:
+        return render_template('prompt.html', prompt_content=prompt_content, title=title)
+
+@app.route("/eugenio/recursion", methods=['GET', 'POST'])
+def eugenio2(prompt_content= "This tool informes the developer on recursive options for their methods or algorithms. Please type your method in the following text box.", title=" Recursive Options Developer Tool"):
+    if request.method == 'POST':
+        prompt = request.form['prompt']
+        new_prompt = " Is there a recursive option for the following method or algorithm? Please describe the ways this can be implemented recursively?"
         return process_request(prompt, new_prompt, "response.html")
     else:
         return render_template('prompt.html', prompt_content=prompt_content, title=title)
