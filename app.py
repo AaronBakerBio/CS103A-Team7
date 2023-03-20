@@ -60,7 +60,7 @@ def model(prompt_content="Give me a business model for my app", title="Business 
         return render_template('prompt.html', prompt_content=prompt_content, title=title)
     
 @app.route("/prompt_aby/business", methods=['GET', 'POST'])
-def business(prompt_content="Is my app worth any money?", title="Sample"):
+def business(prompt_content="Is my app worth any money?", title="Money"):
     if request.method == 'POST':
         prompt = request.form['prompt']
         new_prompt = "Is my app worth any money?"
