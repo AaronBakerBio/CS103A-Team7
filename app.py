@@ -50,20 +50,29 @@ Aby Code Start
 def aby_home():
     return render_template("aby.html")
 
-@app.route("/prompt_aby/test", methods=['GET', 'POST'])
-def aby(prompt_content="Ichanged", title="I Changed Too"):
+@app.route("/prompt_aby/businessModel", methods=['GET', 'POST'])
+def model(prompt_content="Give me a business model for my app", title="Business Model"):
     if request.method == 'POST':
         prompt = request.form['prompt']
-        new_prompt = "give me a paragrpah of lorem ipsum"
+        new_prompt = "Give me a business model for my app idea"
         return process_request(prompt, new_prompt, "response.html")
     else:
         return render_template('prompt.html', prompt_content=prompt_content, title=title)
     
-@app.route("/prompt_aby/sample", methods=['GET', 'POST'])
-def sample(prompt_content="Sample", title="Sample"):
+@app.route("/prompt_aby/business", methods=['GET', 'POST'])
+def business(prompt_content="Is my app worth any money?", title="Sample"):
     if request.method == 'POST':
         prompt = request.form['prompt']
-        new_prompt = "give me a sample paragraph"
+        new_prompt = "Is my app worth any money?"
+        return process_request(prompt, new_prompt, "response.html")
+    else:
+        return render_template('prompt.html', prompt_content=prompt_content, title=title)
+    
+@app.route("/prompt_aby/patent", methods=['GET', 'POST'])
+def patent(prompt_content="Is there a patent for my app?", title="Patent"):
+    if request.method == 'POST':
+        prompt = request.form['prompt']
+        new_prompt = "Is there a patent for my app?"
         return process_request(prompt, new_prompt, "response.html")
     else:
         return render_template('prompt.html', prompt_content=prompt_content, title=title)
