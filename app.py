@@ -15,7 +15,7 @@ def process_request(prompt, new_prompt, htmlarg):
         prompt = request.form['prompt']
         new_prompt += prompt
         answer = gptAPI.getResponse(new_prompt)
-        return render_template("response.html", answer=answer, prompt=prompt)
+        return render_template(htmlarg, answer=answer, prompt=prompt)
     else:
         return render_template(htmlarg)
 
@@ -144,7 +144,7 @@ def descriptions(prompt_content="  Enter your code below to receive description 
         new_prompt = ''' for the code I entered, explain what it did. If it uses data structures, use examples where 
         you explain step by step what happens to those data structures. I am not a long time coder and need it clear 
         and very descriptive, with numbered steps in your examples.'''
-        return process_request(prompt, new_prompt, "response.html")
+        return process_request(prompt, new_prompt, "dankresponse.html")
     else:
         return render_template('prompt.html', prompt_content=prompt_content, title=title)
 
@@ -225,13 +225,13 @@ Pseudocode:
 11          i++
 
         '''
-        return process_request(prompt, new_prompt, "response.html")
+        return process_request(prompt, new_prompt, "dankresponse.html")
     else:
         return render_template('prompt.html', prompt_content=prompt_content, title=title)
 
             
 @app.route("/aaron_comment", methods=['GET', 'POST'])
-def comment(prompt_content=" Aaron Sample", title=" Aarron Sample"):
+def comment(prompt_content="This method will convert code in java into pseudocode.", title="Pseudocode generator for java"):
     if request.method == 'POST':
         prompt = request.form['prompt']
         new_prompt = ''' put comments on the code above in the style of the code below. strip the actual code
@@ -246,7 +246,7 @@ public Node<T> getFirst()
         // origin code
     }
         '''
-        return process_request(prompt, new_prompt, "response.html")
+        return process_request(prompt, new_prompt, "dankresponse.html")
     else:
         return render_template('prompt.html', prompt_content=prompt_content, title=title)
         
