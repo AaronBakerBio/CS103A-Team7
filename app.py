@@ -235,7 +235,7 @@ def comment(prompt_content="This method will give you javadocs for java code wit
     if request.method == 'POST':
         prompt = request.form['prompt']
         new_prompt = ''' put comments on the methods above in the style of the code below. strip the actual code
-            from the inside of the method leaving just // origin code. Below is an example for method getFirst(). Do not return the example below. Return javadocs for all methods in my prompt.
+            from the inside of the method leaving just // origin code. Below is an example of pseudocode output
             /**
             * O(1)
             * Method getFirst() returns a pointer to the first element in the list.
