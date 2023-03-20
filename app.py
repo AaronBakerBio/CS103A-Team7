@@ -121,16 +121,6 @@ def eugenio2(prompt_content= "This tool informes the developer on recursive opti
         return render_template('prompt.html', prompt_content=prompt_content, title=title)
 
 
-@app.route("/eugenio/newPrompt", methods=['GET', 'POST'])
-def eugenio3(prompt_content=" Euegnio Sample", title=" Eugenio Sample"):
-    if request.method == 'POST':
-        prompt = request.form['prompt']
-        new_prompt = " is the name of my new cookie, give me a recipe for this new sweet."
-        return process_request(prompt, new_prompt, "response.html")
-    else:
-        return render_template('prompt.html', prompt_content=prompt_content, title=title)
-
-
 '''
 Eugenio Code End 
 
