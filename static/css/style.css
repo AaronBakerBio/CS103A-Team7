@@ -70,3 +70,17 @@ a:hover {
   color: white;
   background-color: green;
 }
+
+textarea {
+  height: 200px;
+  width: 300px;
+  padding: 0.3rem;
+  margin-top: 1rem;
+}
+
+form input {
+  height: 30px;
+  color: white;
+  background-color: green;
+  width: 100%;
+}

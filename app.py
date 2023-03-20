@@ -24,8 +24,12 @@ def process_request(prompt, new_prompt, htmlarg):
 def index():
     return render_template("index.html")
 
+@app.route("/about", methods=['GET', 'POST'])
+def about_all():
+    return render_template("about.html")
+
 '''
-Notes:
+Help Notes:
 - create new route by copy pasting
 - change def name
 - change url
@@ -47,7 +51,7 @@ def aby_home():
     return render_template("aby.html")
 
 @app.route("/prompt_aby/test", methods=['GET', 'POST'])
-def aby(prompt_content="Test", title="Test"):
+def aby(prompt_content="Ichanged", title="I Changed Too"):
     if request.method == 'POST':
         prompt = request.form['prompt']
         new_prompt = "give me a paragrpah of lorem ipsum"
@@ -82,6 +86,16 @@ def eugenio_home():
     
 @app.route("/eugenio/sample", methods=['GET', 'POST'])
 def eugenio(prompt_content=" Euegnio Sample", title=" Eugenio Sample"):
+    if request.method == 'POST':
+        prompt = request.form['prompt']
+        new_prompt = " is the name of my new cookie, give me a recipe for this new sweet."
+        return process_request(prompt, new_prompt, "response.html")
+    else:
+        return render_template('prompt.html', prompt_content=prompt_content, title=title)
+
+
+@app.route("/eugenio/newPrompt", methods=['GET', 'POST'])
+def eugenio2(prompt_content=" Euegnio Sample", title=" Eugenio Sample"):
     if request.method == 'POST':
         prompt = request.form['prompt']
         new_prompt = " is the name of my new cookie, give me a recipe for this new sweet."

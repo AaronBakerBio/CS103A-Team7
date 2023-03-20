@@ -17,6 +17,7 @@
       <h3>Answer:</h3>
       <code id="answer"><p>{{ answer }}</p></code>
       <button id="copy-btn">Copy Response</button>
+      <a href="/">Back Home</a>
     </div>
 
     <script>
@@ -30,14 +31,12 @@
           }
         );
       }
-      document.getElementById("answer");
+      var textToCopy = document.getElementById("answer").textContent;
       document
         .getElementById("copy-btn")
         .addEventListener("click", function () {
-          // Get the text to copy
-          var text = document.querySelectorAll("pre")[1].textContent;
           // Copy the selected text
-          copyToClipboard(text);
+          copyToClipboard(textToCopy);
         });
     </script>
   </body>
