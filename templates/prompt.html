@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Prompt</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+  </head>
+  <body>
+    <h1>{{title}}</h1>
+    <p>{{ prompt_content }}</p>
+    <form method="post">
+      <textarea name="prompt"></textarea>
+      <p><input type="submit" value="get response" /></p>
+    </form>
+  </body>
+</html>

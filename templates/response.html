@@ -2,104 +2,43 @@
 <html>
   <head>
     <title>GPT Generated Response</title>
-    <style>
-        body {
-        background-color: #0d1117;
-        color: #c9d1d9;
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        font-size: 16px;
-        line-height: 1.5;
-      }
 
-      .container {
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 20px;
-      }
-
-      h1 {
-        color: #f0f6fc;
-        text-align: center;
-        margin-top: 50px;
-        font-size: 32px;
-        font-weight: bold;
-      }
-
-      h3 {
-        color: #c9d1d9;
-        font-size: 24px;
-        font-weight: bold;
-        margin-top: 30px;
-      }
-
-      pre {
-        background-color: #1f1f1f;
-        color: #dcdcdc;
-        padding: 10px;
-        border-radius: 5px;
-        font-size: 18px;
-        margin-top: 10px;
-        margin-bottom: 30px;
-        white-space: pre-wrap;
-      }
-
-      a {
-        color: #58a6ff;
-        text-decoration: none;
-        border-bottom: 1px dotted #58a6ff;
-        transition: border-bottom 0.3s ease;
-        font-size: 18px;
-        margin-right: 10px;
-      }
-
-      a:hover {
-        border-bottom: 1px solid #58a6ff;
-      }
-
-      button {
-        background-color: #f44e3b;
-        color: #fff;
-        border: none;
-        padding: 10px;
-        border-radius: 5px;
-        font-size: 18px;
-        cursor: pointer;
-        margin-right: 10px;
-      }
-
-      button:hover {
-        background-color: #f9826c;
-      }
-    </style>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
   </head>
   <body>
     <div class="container">
       <h1>GPT Generated Response</h1>
       <h3>Question:</h3>
-      <pre>{{ prompt }}</pre>
+      <code>{{ prompt }}</code>
       <h3>Answer:</h3>
-      <pre>{{ answer }}</pre>
+      <code id="answer"><p>{{ answer }}</p></code>
       <button id="copy-btn">Copy Response</button>
-      <a href="{{ url_for('aaron') }}">Make another query</a>
     </div>
 
     <script>
       function copyToClipboard(text) {
-        navigator.clipboard.writeText(text).then(function() {
-          alert("Response copied to clipboard!");
-        }, function() {
-          alert("Copy failed. Please try again.");
-        });
+        navigator.clipboard.writeText(text).then(
+          function () {
+            alert("Response copied to clipboard!");
+          },
+          function () {
+            alert("Copy failed. Please try again.");
+          }
+        );
       }
-
-      document.getElementById("copy-btn").addEventListener("click", function() {
-        // Get the text to copy
-        var text = document.querySelectorAll("pre")[1].textContent;
-        // Copy the selected text
-        copyToClipboard(text);
-      });
+      document.getElementById("answer");
+      document
+        .getElementById("copy-btn")
+        .addEventListener("click", function () {
+          // Get the text to copy
+          var text = document.querySelectorAll("pre")[1].textContent;
+          // Copy the selected text
+          copyToClipboard(text);
+        });
     </script>
   </body>
 </html>
