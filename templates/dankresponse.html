@@ -8,12 +8,75 @@
       type="text/css"
       href="{{ url_for('static', filename='css/style.css') }}"
     />
+    <style>
+      body {
+        background-color: #f2f2f2;
+        color: #333;
+        font-family: Arial, sans-serif;
+      }
+      h1 {
+        color: #007bff;
+        margin-top: 30px;
+        margin-bottom: 20px;
+        font-size: 36px;
+      }
+      h3 {
+        color: #333;
+        margin-top: 30px;
+        margin-bottom: 10px;
+        font-size: 24px;
+      }
+      code {
+        background-color: #f7f7f7;
+        color: #333;
+        padding: 10px;
+        border-radius: 5px;
+        font-size: 18px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        white-space: pre-wrap;
+      }
+      pre {
+        background-color: #f7f7f7;
+        color: #333;
+        padding: 10px;
+        border-radius: 5px;
+        font-size: 18px;
+        margin-top: 10px;
+        margin-bottom: 30px;
+        white-space: pre-wrap;
+        border: 1px solid #ddd;
+      }
+      a {
+        color: #007bff;
+        text-decoration: none;
+        font-size: 18px;
+        margin-right: 10px;
+      }
+      a:hover {
+        color: #0056b3;
+        text-decoration: underline;
+      }
+      button {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        padding: 10px;
+        border-radius: 5px;
+        font-size: 18px;
+        cursor: pointer;
+        margin-right: 10px;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+    </style>
   </head>
   <body>
     <div class="container">
       <h1>GPT Generated Response</h1>
       <h3>Question:</h3>
-      <code>{{ prompt }}</code>
+      <pre>{{ prompt }}</pre>
       <h3>Answer:</h3>
       <pre id="answer">{{ answer }}</pre>
       <button id="copy-btn">Copy Response</button>

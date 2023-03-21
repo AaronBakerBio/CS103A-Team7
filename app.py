@@ -283,10 +283,20 @@ public Node<T> getFirst()
         
 
 '''
-Aaaron Code End 
+Aaron Code End 
 
 '''
 
+@app.route('/rue/code-generator', methods=['GET', 'POST'])
+def code_generator():
+    if request.method == 'POST':
+        prompt = request.form['prompt']
+        newprompt = ''
+        return process_request(prompt, newprompt, "dankresponse.html")
+    else:
+        # Handle GET request
+        # ...
+        return render_template('code_generator.html')
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
