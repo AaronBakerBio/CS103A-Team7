@@ -146,6 +146,7 @@ def rue_prompt(prompt_content=" Rue Sample", title=" Rue Sample"):
         return process_request(prompt, new_prompt, "response.html")
     else:
         return render_template('prompt.html', prompt_content=prompt_content, title=title)
+        
 
 
 
@@ -288,15 +289,37 @@ Aaron Code End
 '''
 
 @app.route('/rue/code-generator', methods=['GET', 'POST'])
-def code_generator():
+def code_generator(prompt_content="Prompt that generates comments for python code",
+                    title="Python Code Commenter" ):
     if request.method == 'POST':
         prompt = request.form['prompt']
-        newprompt = ''
+        newprompt = '''
+put comments on the python methods above in the style of the code below. 
+
+Example :
+def process_file(input_filename, output_filename, encode_decode, key):
+    """Function that is used to encode or decode a file based on user input.
+    Returns true if opening, closing, and writing to output_filename were
+    successful, otherwise returns false.
+    :param input_filename
+    File name (tested only for .txt) that will be read
+    :param output_filename
+    File that will be written to (tested only for .txt)
+    :param encode_decode
+    if encode_decode == 'e', encoding will be performed,
+    otherwise decode the file
+    :param key
+    Amount to encode or decode (right-shift amount)
+    """
+
+        
+        '''
         return process_request(prompt, newprompt, "dankresponse.html")
     else:
         # Handle GET request
         # ...
-        return render_template('code_generator.html')
+        return render_template('prompt.html', prompt_content=prompt_content, title=title)
+
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
