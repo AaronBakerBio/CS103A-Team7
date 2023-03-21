@@ -320,6 +320,9 @@ def process_file(input_filename, output_filename, encode_decode, key):
         # ...
         return render_template('prompt.html', prompt_content=prompt_content, title=title)
 
+@app.route("/rue_about", methods = ['GET', 'POST'])
+def rue_about():
+    return render_template("rue_about.html")
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
