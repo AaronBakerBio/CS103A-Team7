@@ -37,5 +37,5 @@ if __name__=='__main__':
     '''
     '''
     import os
-    openai.api_key = "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"
-    g = GPT("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")
+    openai.api_key = os.getenv("I have placed the key here")
+    g = GPT(openai.api_key)
