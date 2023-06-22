@@ -133,6 +133,8 @@ Rue Code Start
 
 '''
 
+
+
 @app.route("/rue", methods=['GET', 'POST'])
 def rue_home():
     return render_template("rue.html")
@@ -147,6 +149,61 @@ def rue_prompt(prompt_content=" Rue Sample", title=" Rue Sample"):
     else:
         return render_template('prompt.html', prompt_content=prompt_content, title=title)
         
+
+
+
+@app.route("/rue/dingus_bop", methods=['GET', 'POST'])
+def fairytale_generator(prompt_content="Prompt that generates a ~fun silly story~",
+                    title="~Story Time~" ):
+    if request.method == 'POST':
+        prompt = request.form['prompt']
+        newprompt = ''' 
+        Here is a list of nouns: 
+        [pumpkin, onion, dress, cotton, window, shoe, fairy, forest, clock]
+        Here is a list of verbs:
+        [discover, chant, punish, pursue, interpret, spin, escape]
+        Please incorporate up to 3 of the nouns and up to 3 of the verbs, along with 1-10 words from the following
+        input, and write a fairytale-style story: 
+        '''
+        return process_request(prompt, newprompt, "dankresponse.html")
+    else:
+        # Handle GET request
+        # ...
+        return render_template('prompt.html', prompt_content=prompt_content, title=title)
+
+
+
+@app.route('/rue/docstring-maker', methods=['GET', 'POST'])
+def code_generator(prompt_content="Prompt that generates comments for python code",
+                    title="Python Code Commenter" ):
+    if request.method == 'POST':
+        prompt = request.form['prompt']
+        newprompt = '''
+put comments on the python methods above in the style of the code below. 
+
+Example :
+def process_file(input_filename, output_filename, encode_decode, key):
+    """Function that is used to encode or decode a file based on user input.
+    Returns true if opening, closing, and writing to output_filename were
+    successful, otherwise returns false.
+    :param input_filename
+    File name (tested only for .txt) that will be read
+    :param output_filename
+    File that will be written to (tested only for .txt)
+    :param encode_decode
+    if encode_decode == 'e', encoding will be performed,
+    otherwise decode the file
+    :param key
+    Amount to encode or decode (right-shift amount)
+    """
+
+        
+        '''
+        return process_request(prompt, newprompt, "dankresponse.html")
+    else:
+        # Handle GET request
+        # ...
+        return render_template('prompt.html', prompt_content=prompt_content, title=title)
 
 
 
